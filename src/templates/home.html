@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Привет, {{name}}!!!</h1>
-    <p>Today - {{date}}</p>
-</body>
-</html>
+{% extends "base.html" %}
+
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    {% for obj in object_list %}
+        <p></p><a href="{{ obj.url }}">{{ obj.title }}</a></p>
+        <p>{{ obj.company }}</p>
+        <p>{{ obj.description }}</p>
+    {% endfor %}
+{% endblock %}
