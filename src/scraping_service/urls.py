@@ -19,5 +19,5 @@ from scraping.views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view),
+    path('home/', home_view),   # При вводе адреса server/home выполняется функция home_view
 ]

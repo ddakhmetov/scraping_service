@@ -1,0 +1,175 @@
+[
+{
+    "model": "scraping.city",
+    "pk": 1,
+    "fields": {
+        "name": "Караганда",
+        "slug": "karaganda"
+    }
+},
+{
+    "model": "scraping.city",
+    "pk": 2,
+    "fields": {
+        "name": "Нур-Султан",
+        "slug": "nur-sultan"
+    }
+},
+{
+    "model": "scraping.city",
+    "pk": 4,
+    "fields": {
+        "name": "Алматы",
+        "slug": "almaty"
+    }
+},
+{
+    "model": "scraping.language",
+    "pk": 1,
+    "fields": {
+        "name": "Python",
+        "slug": "python"
+    }
+},
+{
+    "model": "scraping.language",
+    "pk": 2,
+    "fields": {
+        "name": "Java",
+        "slug": "java"
+    }
+},
+{
+    "model": "scraping.language",
+    "pk": 3,
+    "fields": {
+        "name": "JavaScript",
+        "slug": "javascript"
+    }
+},
+{
+    "model": "scraping.language",
+    "pk": 4,
+    "fields": {
+        "name": "Django",
+        "slug": "django"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 1,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/41120281?query=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%20Python",
+        "title": "Python-разработчик (Junior\\ Middle)",
+        "company": "ТОО WOOPPAY Карганда",
+        "description": "Пирожки на полке, воду в диспенсере, платный туалет и абонемент в офисную библиотеку.\r\nЗнание Python 3.6+. Опыт написания тестов с помощью pytest. Опыт работы с БД, будет плюсом знакомство с sqlalchemy.",
+        "city": 1,
+        "language": 1,
+        "timestamp": "2021-01-14"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 2,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/41184639?query=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%20Java",
+        "title": "Программист Java",
+        "company": "ТОО ZigZag Group",
+        "description": "Что входит в ежедневную работу: Аргументированно ставить сроки выполнения задач. Разработка программной логики. Написание нового программного кода по предъявленным требованиям.",
+        "city": 1,
+        "language": 2,
+        "timestamp": "2021-01-14"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 3,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/42158637?query=Python-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA",
+        "title": "Программист Python",
+        "company": "ТОО Синтегра",
+        "description": "Требуемый опыт работы: не требуется\r\nПолная занятость, полный день\r\n\r\nГруппа Компаний \"Profit-group\" более 20 лет на IT рынке и продолжает ставить перед собой новые амбициозные цели. Мы являемся разработчиком и поставщиком IT-услуг - ведем проект по цифровизации государственных учреждений.\r\n\r\nМы растем, развиваемся, расширяем штат и сейчас мы приглашаем в нашу дружную команду разработчика со знанием Python.\r\n\r\nОбязанности:\r\nРазработка приложения CallBox",
+        "city": 1,
+        "language": 1,
+        "timestamp": "2021-02-04"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 4,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/41005910?query=Python-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA",
+        "title": "Python Developer",
+        "company": "ТОО AVIATA.KZ",
+        "description": "Разработка web части сайтов на Django. - Разработка REST сервисов на DRF. - Разработка async сервисов. - Разработка клиентов для работы со сторонними...\r\nС чем будешь работать: — Опыт работы с Django/Flask/FastApi. — Опыт работы с DRF. — Умение писать асинхронный код с использование...",
+        "city": 4,
+        "language": 1,
+        "timestamp": "2021-02-04"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 5,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/41519952?query=Python-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA",
+        "title": "Python-разработчик",
+        "company": "ТОО Kazdream Technologies",
+        "description": "Разработка проектов на Django. Тех.поддержка проектов.\r\nЗнание и опыт программирования на Python (Django). Опыт написания RESTFul веб-сервисов на Python. Опыт работы с любой SQL СУБД...",
+        "city": 2,
+        "language": 1,
+        "timestamp": "2021-02-04"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 6,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/41893424?query=Java",
+        "title": "Java-разработчик",
+        "company": "ТОО Khan Group",
+        "description": "Разработка веб-приложений на Java. Построение и оптимизация высоконагруженной базы данных с высокой доступностью. Внедрение новых технологий.\r\nЗнание и умение работать с Java EE, Hibernate, MySQL. Знание и умение использовать различные алгоритмы и структуры. Опыт работы с...",
+        "city": 4,
+        "language": 2,
+        "timestamp": "2021-02-04"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 7,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/41718427?query=Java",
+        "title": "Senior Java Developer",
+        "company": "ТОО Dynamics Business Technologies",
+        "description": "Разработка и поддержка систем уровня Enterprise.\r\nПонимание Agile. Хорошее знание Java SE 8+. Знание и опыт использования Spring/Java EE. Опыт разработки UI – JSP/JSF...",
+        "city": 2,
+        "language": 2,
+        "timestamp": "2021-02-04"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 8,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/39870298?query=Javascript",
+        "title": "Frontend-разработчик",
+        "company": "ТОО AVIATA.KZ",
+        "description": "Разработка интерфейса новых продуктов, в том числе экспериментальных/нестандартных UI. Поддержка текущих проектов.\r\nВдумчивая и тщательная командная разработка, без нереальных дедлайнов и плохого кода. HTML, CSS, JavaScript, TypeScript. Git. Vue/React, умение работать...",
+        "city": 4,
+        "language": 3,
+        "timestamp": "2021-02-04"
+    }
+},
+{
+    "model": "scraping.vacancy",
+    "pk": 9,
+    "fields": {
+        "url": "https://karaganda.hh.kz/vacancy/42025304?query=Javascript",
+        "title": "Разработчик Junior Frontend",
+        "company": "ТОО G-space",
+        "description": "js(работа с DOM элементами, подключение к сайту слайдеров, плееров, плагинов).\r\nhtml(адаптивная семантическая верстка). - css(SASS,SCSS,BEM). - CMS(Joomla or Wordpress). - Умение заливать на хостинг сайты. - Будет хорошим плюсом...",
+        "city": 2,
+        "language": 3,
+        "timestamp": "2021-02-04"
+    }
+}
+]

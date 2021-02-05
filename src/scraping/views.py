@@ -4,6 +4,9 @@ from .forms import FindForm
 from .models import Vacancy
 
 
+#_____________________________________________#
+# Страница home. Работа с базой данных, логика
+
 def home_view(request):
     # print(request, 'POST')
     form = FindForm()
@@ -17,5 +20,8 @@ def home_view(request):
         elif language:
             _filter['language__slug'] = language
 
-        qs = Vacancy.objects.filter(**_filter)
-    return render(request, 'scraping/home.html', {'object_list': qs, 'form': form})
+        qs = Vacancy.objects.filter(**_filter)      # Не понял что такое **_filter!!!!!!!!!!!!!!!!!!
+    return render(request, 'scraping/home.html', {'object_list': qs, 'form': form}) # Рендер самой страницы и передача в неё данных для отображения
+
+# Страница home. Работа с базой данных, логика
+#_____________________________________________#
