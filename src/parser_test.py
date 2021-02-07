@@ -5,7 +5,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 F
            'Accept': 'text/html,application/xhtml+xml;q=0.9,*/*,q=0.8'
            }    # Косим под браузер, чтоб сервер нас не завернул
 
-url = 'https://karaganda.hh.kz/search/vacancy?clusters=true&area=177&enable_snippets=true&salary=&st=searchVacancy&text=python&customDomain=1'    # Указываем url страницы, которую будем получать
+url = 'https://hh.kz/search/vacancy?clusters=true&area=177&enable_snippets=true&salary=&st=searchVacancy&text=python'    # Указываем url страницы, которую будем получать
 resp = requests.get(url, headers=headers)           # Отправляем запрос на страницу библиотекой requests
 
 h = codecs.open('work_kz.html', 'w', 'utf-8')      # Создаём html файл и открываем его в режиме записи, подключая кодек в utf-8 (на всякий случай, если на сайте указана другая кодировка)
