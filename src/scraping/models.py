@@ -4,6 +4,11 @@ from django.db import models
 from scraping.urls import from_cyrillic_to_eng
 
 
+def default_urls_ua():
+    return {"work": "", "rabota": ""}
+
+def default_urls_kz():
+    return {"hh": "", "jooble": ""}
 
 class City(models.Model):
     name = models.CharField(max_length=50,
@@ -69,3 +74,29 @@ class Errors(models.Model):
     class Meta:
         verbose_name = 'Ошибка'
         verbose_name_plural = 'Ошибки'
+
+
+class Url_ua(models.Model):
+
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey('Language', on_delete=models.CASCADE,
+                                 verbose_name='Язык программирования')
+    url_data_ua = models.JSONField(default=default_urls_ua)
+
+    class Meta:
+        unique_together = ("city", "language")
+        verbose_name = 'Урл Украины'
+        verbose_name_plural = 'Урлы Украины'
+
+
+class Url_kz(models.Model):
+
+    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+    language = models.ForeignKey('Language', on_delete=models.CASCADE,
+                                 verbose_name='Язык программирования')
+    url_data_kz = models.JSONField(default=default_urls_kz)
+
+    class Meta:
+        unique_together = ("city", "language")
+        verbose_name = 'Урл Казахстана'
+        verbose_name_plural = 'Урлы Казахстана'
