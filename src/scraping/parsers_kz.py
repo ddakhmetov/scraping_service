@@ -11,18 +11,40 @@ from random import randint
 
 __all__ = ('hh', 'jooble')
 
-headers = [{'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 Firefox/47.0',
+headers = [{'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.99 Safari/537.36',
            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
-           {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 '
-                          'Safari/537.36',
+           {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.99 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
-           {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:53.0) Gecko/20100101 Firefox/53.0',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'}
+           {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.99 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) '
+                          'Version/10.0.1 Safari/602.2.14',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.71 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.98 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.98 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.71 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/54.0.2840.99 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
+           {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*,q=0.8'},
            ]    # Косим под браузер, чтоб сервер нас не завернул
 
 
 def hh(url):
-    resp = requests.get(url, headers=headers[randint(0, 2)])           # Отправляем запрос на страницу библиотекой requests
+    resp = requests.get(url, headers=headers[randint(0, 9)])           # Отправляем запрос на страницу библиотекой requests
     jobs = []   # Создаём список, куда будут сохраняться словари из цикла for
     errors = []
     if resp.status_code == 200:     # Уже используем BS. Проверяем статус. status_code == 200 - получен некий ответ (без ошибок)
@@ -70,6 +92,10 @@ def jooble(url):
         soup = BS(resp.content, 'html.parser')  # Формируем т.н. суп. Принято (если впервые) использовать soup.
         # Указываем, что используется html парсер (обязательно)
         # Определяем главный div, в котором лежит интересующая информация
+
+#               ______________________________
+#               |Разбор супа на составляющие |
+#               --------------------------------------------------------------
         main_div = soup.find('div', attrs={'class': '_70404'})  # обращаемся к soup, выбираем метод, указываем что мы ищем (div) и вторым параметром конкретизируем
         if main_div:
             div_lst = main_div.find_all('article', attrs={'class': '_31572 _07ebc'})  # Внутри нужного div'а ищем те, которые содержат сами вакансии
@@ -79,6 +105,8 @@ def jooble(url):
                 href = pretitle['href']
                 content = div.find('div', attrs={'_0b1c1'})
                 company = div.find('div', attrs={'class', 'caption _8d375'})
+#               Разбор супа на составляющие
+#               ---------------------------------------------------------------
 
                 jobs.append({'title': title, 'url': domain + href, 'description': content.text, 'company': company.text})
         else:
