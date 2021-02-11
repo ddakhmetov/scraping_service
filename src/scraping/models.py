@@ -61,6 +61,8 @@ class Vacancy(models.Model):
     class Meta:
         verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
+        ordering = ['-timestamp']   # Данные на сайте сортируются в обратном порядке.
+                                    # Самые свежие будут отображаться самыми первыми
 
     def __str__(self):
         return self.title
