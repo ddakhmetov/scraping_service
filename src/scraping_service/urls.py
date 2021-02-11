@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from scraping.views import home_view
+from scraping.views import home_view, list_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view),   # При вводе адреса server/home выполняется функция home_view
+    path('list', list_view, name='list'),   # name='name' нужно для относительных url
+    path('', home_view, name='home'),   # При вводе адреса server/home выполняется функция home_view
 ]
