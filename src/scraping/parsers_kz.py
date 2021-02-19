@@ -71,12 +71,12 @@ def hh(url, city=None, language=None):
 
                     jobs.append({'title': title.text, 'url': href, 'description': content, 'company': company, 'city_id': city, 'language_id': language})
             else:
-                errors.append({'url': url, 'title': 'div does not exists'})    # Ловим ошибку, когда структура сайта изменилась, и main_div не найден
+                errors.append({'url': url, 'title': 'main_div не существует'})    # Ловим ошибку, когда структура сайта изменилась, и main_div не найден
                 err = codecs.open('errors_kz.txt', 'w', 'utf-8')
                 err.write(str(errors))
                 err.close()
         else:
-            errors.append({'url': url, 'title': 'Page do not response'})   # Ловим ошибку, когда главная ссылка перестаёт работать
+            errors.append({'url': url, 'title': 'Страница не отвечает'})   # Ловим ошибку, когда главная ссылка перестаёт работать
             err404 = codecs.open('errors_kz404.txt', 'w', 'utf-8')
             err404.write(str(errors))
             err404.close()
@@ -113,10 +113,10 @@ def jooble(url, city=None, language=None):
                     jobs.append({'title': title, 'url': domain + href, 'description': content.text, 'company': company.text, 'city_id': city, 'language_id': language})
             else:
                 errors.append({'url': url,
-                               'title': 'div does not exists'})  # Ловим ошибку, когда структура сайта изменилась, и main_div не найден
+                               'title': 'main_div не существует'})  # Ловим ошибку, когда структура сайта изменилась, и main_div не найден
         else:
             errors.append(
-                {'url': url, 'title': 'Page do not response'})  # Ловим ошибку, когда главная ссылка перестаёт работать
+                {'url': url, 'title': 'Страница не отвечает'})  # Ловим ошибку, когда главная ссылка перестаёт работать
 
     return jobs, errors
 
