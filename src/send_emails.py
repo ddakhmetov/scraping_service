@@ -15,7 +15,8 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "scraping_service.settings"
 # ----------------------------
 
 django.setup()
-from scraping.models import Vacancy, Errors, Url_kz
+from scraping.models import Vacancy, Errors, Url_kz, City, Language
+
 # from scraping_service.settings import EMAIL_HOST_USER     # Если использовать dotenv
 today = datetime.date.today()
 subject = f'Рассылка вакансий за { today }'
@@ -79,12 +80,22 @@ if qs.exists():
         _html += f"<p><a href='{ i['url'] }'>Error: {i['title']}</a></p><br>"
     subject = f"Ошибки скрапинга { today }"
     text_content = f"Ошибки скрапинга { today }"
-    qs = Url_kz.objects.all().values('city', 'language')
+qs = Url_kz.objects.all().values('city', 'language')
 urls_dct = {(i['city'], i['language']): True for i in qs}
 urls_err = ''
+city_qs = City.objects.all().values()
+language_qs = Language.objects.all().values()
+city_lst = []
+language_lst = []
+for i in city_qs:
+    city = i.get('name')
+    city_lst.append(city)
+for j in language_qs:
+    language = j.get('name')
+    language_lst.append(language)
 for keys in users_dct.keys():
     if keys not in urls_dct:
-        urls_err += f"<p>Для города: { keys[0] } и языка программирования: { keys[1] } отсутствуют URLs</p><br>"
+        urls_err += f"<p>Для города: { city_lst[keys[0] - 1] } и языка программирования: { language_lst[keys[1] - 1] } отсутствуют URLs</p><br>"
 if urls_err:
     subject += ' Отсутствующие урлы'
     _html += urls_err
