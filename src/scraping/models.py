@@ -81,17 +81,17 @@ class Errors(models.Model):
         verbose_name_plural = 'Ошибки'
 
 
-class Url_ua(models.Model):
-
-    city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
-    language = models.ForeignKey('Language', on_delete=models.CASCADE,
-                                 verbose_name='Язык программирования')
-    url_data_ua = models.JSONField(default=default_urls_ua)
-
-    class Meta:
-        unique_together = ("city", "language")
-        verbose_name = 'Урл Украины'
-        verbose_name_plural = 'Урлы Украины'
+# class Url_ua(models.Model):
+#
+#     city = models.ForeignKey('City', on_delete=models.CASCADE, verbose_name='Город')
+#     language = models.ForeignKey('Language', on_delete=models.CASCADE,
+#                                  verbose_name='Язык программирования')
+#     url_data_ua = models.JSONField(default=default_urls_ua)
+#
+#     class Meta:
+#         unique_together = ("city", "language")
+#         verbose_name = 'Урл Украины'
+#         verbose_name_plural = 'Урлы Украины'
 
 
 class Url_kz(models.Model):
