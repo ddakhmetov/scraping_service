@@ -1,8 +1,10 @@
 import asyncio
 import os, sys
+import datetime as dt
 
 from django.contrib.auth import get_user_model
 from scraping.parsers_kz import *
+
 
 
 # ----------------------------
@@ -22,8 +24,7 @@ django.setup()
 # Обращаться к файлам проекта нужно после запуска Django
 
 from django.db import DatabaseError
-from scraping.models import Vacancy, City, Language, Errors, \
-    Url_kz
+from scraping.models import Vacancy, Errors, Url_kz
 # Обращаться к файлам проекта нужно после запуска Django
 # ------------------------------------------------------
 
@@ -125,7 +126,13 @@ for job in jobs:
         pass
 
 if errors:
-    err = Errors(data=f'errors:{errors}').save()
+    qs = Errors.objects.filter(timestamp=dt.date.today())
+    if qs.exists:
+        err = qs.first()
+        err.data.update({'errors': errors})
+        err.save()
+    else:
+        err = Errors(data=f'errors:{errors}').save()
 
 
 # h = codecs.open('work_kz.txt', 'w', 'utf-8')      # Создаём html файл и открываем его в режиме записи, подключая кодек в utf-8 (на всякий случай, если на сайте указана другая кодировка)

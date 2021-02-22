@@ -75,11 +75,21 @@ to = ADMIN_USER
 _html = ''
 if qs.exists():
     error = qs.first()
-    data = error.data
+    data = error.data['errors']
+    _html += '<h2>Не найдены страницы</h2>'
     for i in data:
-        _html += f"<p><a href='{ i['url'] }'>Error: {i['title']}</a></p><br>"
+        _html += f"<p><a href='{ i['url'] }'>Ошибка: {i['title']}</a></p><br>"
     subject = f"Ошибки скрапинга { today }"
     text_content = f"Ошибки скрапинга { today }"
+    data = error.data['user_data']
+    if data:
+        _html += '<hr>'
+        _html += '<h2>Пожелания пользователей</h2>'
+        for i in data:
+            _html += f"<p>Город: {i['city']} Специальность: {i['language']} Email: {i['email']}</p><br>"
+        subject = f"Пожелания пользователей {today}"
+        text_content = f"Пожелания пользователей"
+
 qs = Url_kz.objects.all().values('city', 'language')
 urls_dct = {(i['city'], i['language']): True for i in qs}
 urls_err = ''
@@ -95,9 +105,12 @@ for j in language_qs:
     language_lst.append(language)
 for keys in users_dct.keys():
     if keys not in urls_dct:
-        urls_err += f"<p>Для города: { city_lst[keys[0] - 1] } и языка программирования: { language_lst[keys[1] - 1] } отсутствуют URLs</p><br>"
+        if keys[0] and keys[1]:
+            _html += '<hr>'
+            _html += '<h2>Отсутствующие урлы</h2>'
+            urls_err += f"<p>Для города: { city_lst[keys[0] - 1] } и языка программирования: { language_lst[keys[1] - 1] } отсутствуют URLs</p><br>"
 if urls_err:
-    subject += ' Отсутствующие урлы'
+    subject += 'Отсутствующие урлы'
     _html += urls_err
 
 if subject:

@@ -15,7 +15,22 @@
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </form>
             <form method="POST" action="{% url 'accounts:delete' %}">{% csrf_token %}
-               <button type="submit" class="btn btn-danger my-5">Удалить аккаунт</button>
+               <button type="submit" class="btn btn-danger my-4">Удалить аккаунт</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <br><br><p class="my-2">Если Вы не нашли подходящий набор Город-Специальность,
+                 Вы можете заполнить форму ниже с Вашими пожеланиями. После того,
+            как необходимые данные будут добавлены, Вы получите письмо на указанный
+            Вами email.</p>
+            <form method="POST" action="{% url 'accounts/contact' %}">{% csrf_token %}
+                <div class="form-group">
+                    {{ contact_form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary my-3">Отправить</button>
             </form>
         </div>
     </div>
