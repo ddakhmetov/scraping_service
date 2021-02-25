@@ -1,0 +1,9 @@
+@font-face {
+    font-family: LeckerliOne;
+    src: url(../fonts/LeckerliOne-Regular.ttf);
+}
+#brand {
+    font-family: LeckerliOne;
+    color: red;
+    font-size: 3ex;
+}

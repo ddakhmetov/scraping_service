@@ -10,21 +10,21 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-    {% for obj in object_list %}
-        <div class="card my-3">
-            <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
-            <div class="card-body">
-                <h6 class="card-title">{{ obj.company }}</h6>
-                <p class="card-text">{{ obj.description }}</p>
-                <p>{{ obj.city.name }} | {{ obj.language.name }} |
-                    <small>{{ obj.timestamp }}</small></p>
-            </div>
-        </div>
-        {% empty %}
-            <h3>К сожалению в этом городе нет данной вакансии</h3>
-    {% endfor %}
+
 
 {% if object_list %}
+    <h2 class="my-4 text-center">Результаты, согласно Вашему запросу</h2>
+    {% for obj in object_list %}
+            <div class="card my-3">
+                <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+                <div class="card-body">
+                    <h6 class="card-title">{{ obj.company }}</h6>
+                    <p class="card-text">{{ obj.description }}</p>
+                    <p>{{ obj.city.name }} | {{ obj.language.name }} |
+                        <small>{{ obj.timestamp }}</small></p>
+                </div>
+            </div>
+    {% endfor %}
     <div class="row">
         <div class="col">
             <nav aria-label="Page navigation example">
@@ -76,6 +76,8 @@
 <!--            </div>-->
         </div>
     </div>
+{% else %}
+    <h3 class="my-4 text-center">К сожалению в этом городе нет данной вакансии</h3>
 {% endif %}
     <div class="row">
         <div class="col-md-6 mx-auto">
