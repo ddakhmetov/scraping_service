@@ -18,7 +18,7 @@ DB_NAME = os.environ.get("DB_NAME")
 DB_USER = os.environ.get("DB_USER")
 DB_PASSWORD = os.environ.get("DB_PASSWORD")
 DB_HOST = os.environ.get("DB_HOST")
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 
@@ -30,7 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*@2!1t6rhifb)a$%l!6ypoh#xjd*sbhho+tqvu82#$ywe)j-3p'
+# SECRET_KEY = '*@2!1t6rhifb)a$%l!6ypoh#xjd*sbhho+tqvu82#$ywe)j-3p'
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -143,11 +144,11 @@ AUTH_USER_MODEL = 'accounts.MyUser'     # Указываем, что users пе�
 
 # Отправка писем через gmail
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = EMAIL_HOST
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'scraping.kz@gmail.com'
-EMAIL_HOST_PASSWORD = 'Password'
+EMAIL_PORT = EMAIL_PORT
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
 
 STATICFILES_DIRS = [
